@@ -189,6 +189,14 @@ Rickshaw.Graph.RangeSlider.Preview = Rickshaw.Class.create({
 			.style("position", "absolute")
 			.style("top", 0);
 
+		// enforce dimensions even when not creating element
+		this.svg.style("height", this.config.height + "px")
+			.style("width", this.config.width + "px");
+		// transfer height to containing element
+		this.element.style.height = this.svg.style("height");
+
+		$("#slider").height($("#slider svg.rickshaw_range_slider_preview").height());
+
 		this._renderDimming();
 		this._renderFrame();
 		this._renderGrippers();
