@@ -164,7 +164,10 @@ Rickshaw.Graph = function(args) {
 				var seriesData = data[index];
 				if(seriesData) {
 					seriesData.forEach( function(d) {
-						d.y = series.scale(d.y);
+						// only scale if non null, since scale will return 0
+						// and 0 renders differently to null see issue #583
+						if (d.y != null)
+							d.y = series.scale(d.y);
 					} );
 				}
 			}
